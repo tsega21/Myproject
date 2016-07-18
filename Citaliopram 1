@@ -1,0 +1,19 @@
+# Making Word Clouds: patient perception (R)
+# install R wordcloud package
+library(wordcloud)
+library(tm)
+# word cloud for Citaliopram's patient perception
+Citaliopram1.text <- scan("Citaliopram/Citaliopram 1.txt", what = "char", sep = "\n")
+Citaliopram2.text <- scan("Citaliopram/Citaliopram 2.txt", what = "char", sep = "\n")
+corpus=Corpus(VectorSource(Citaliopram1.text))
+# Convert to lower-case
+corpus=tm_map(corpus,tolower)
+# Remove stopwords
+corpus=tm_map(corpus,function(x) removeWords(x,stopwords()))
+# convert corpus to a Plain Text Document
+corpus=tm_map(corpus,PlainTextDocument)
+col=brewer.pal(8,"Dark2")
+wordcloud(corpus, min.freq=5, scale=c(5, 1),rot.per = 0.25,
+          random.color=T, max.word=100, random.order=F,colors=col, use.r.layout=F,
+           fixed.asp=T)
+
