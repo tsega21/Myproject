@@ -2,7 +2,7 @@
 # install R wordcloud package
 library(wordcloud)
 library(tm)
-# word cloud for Citaliopram's patient perception
+# word cloud for Citalioprams drug
 Citaliopram1.text <- scan("Citaliopram/Citaliopram 1.txt", what = "char", sep = "\n")
 Citaliopram2.text <- scan("Citaliopram/Citaliopram 2.txt", what = "char", sep = "\n")
 corpus=Corpus(VectorSource(Citaliopram1.text))
